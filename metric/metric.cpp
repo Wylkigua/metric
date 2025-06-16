@@ -3,7 +3,8 @@
 
 RamMemMetric::RamMemMetric() : Metric("RamMemMetric") {}
 
-std::expected<std::string, std::string> RamMemMetric::metric() {
+std::expected<std::string, std::string>
+RamMemMetric::metric() {
     auto result = read_process_mem()
         .and_then([this](unsigned long process_mem) {
             return read_total_mem()
